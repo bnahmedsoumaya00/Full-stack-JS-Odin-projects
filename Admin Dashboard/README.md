@@ -27,8 +27,7 @@ This project is part of **The Odin Project's** curriculum for **Intermediate HTM
 ## 📁 Project Structure
 ```
 Admin Dashboard/
-├── index-new.html          # Main HTML file (restructured)
-├── index.html              # Original HTML file (backup)
+├── index.html          # Main HTML file
 ├── css/
 │   ├── sidebar-and-base.css # Base styles, reset, and sidebar
 │   ├── header.css          # Header component styles
