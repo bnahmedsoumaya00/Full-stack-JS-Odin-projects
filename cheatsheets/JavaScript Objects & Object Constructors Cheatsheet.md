@@ -1,5 +1,6 @@
 # Objects & Object Constructors Cheat Sheet
 
+**📚 Source:** [The Odin Project - Objects and Object Constructors](https://www.theodinproject.com/lessons/node-path-javascript-objects-and-object-constructors)
 
 ## 1. Object Basics
 
