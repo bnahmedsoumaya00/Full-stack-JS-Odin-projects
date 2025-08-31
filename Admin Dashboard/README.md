@@ -1,6 +1,12 @@
 # Admin Dashboard Project - The Odin Project
 
-## 📚 Learning Context
+## �️ Preview
+
+![Admin Dashboard Preview](image.png)
+
+*A modern, responsive admin dashboard built with CSS Grid and featuring a clean, professional interface.*
+
+## �📚 Learning Context
 
 This project is part of **The Odin Project's** curriculum for **Intermediate HTML and CSS**:
 **[Admin Dashboard Lesson](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-admin-dashboard)**
