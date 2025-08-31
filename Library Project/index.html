@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Library</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-book-fill me-2"></i>
+                My Personal Library
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container main-container">
+        <h1 class="page-title display-4">
+            <i class="bi bi-collection-fill me-3"></i>
+            Book Collection
+        </h1>
+
+        <!-- Controls Section -->
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <button type="button" class="btn add-book-btn" data-bs-toggle="modal" data-bs-target="#newBookModal">
+                    <i class="bi bi-plus-circle me-2"></i>
+                    Add New Book
+                </button>
+            </div>
+        </div>
+
+        <!-- Library Statistics -->
+        <div id="libraryStats" class="library-stats" style="display: none;">
+            <div class="row">
+                <div class="col-4 stat-item">
+                    <div class="stat-number" id="totalBooks">0</div>
+                    <div class="stat-label">Total Books</div>
+                </div>
+                <div class="col-4 stat-item">
+                    <div class="stat-number" id="readBooks">0</div>
+                    <div class="stat-label">Books Read</div>
+                </div>
+                <div class="col-4 stat-item">
+                    <div class="stat-number" id="unreadBooks">0</div>
+                    <div class="stat-label">To Read</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Books Display -->
+        <div id="library" class="row g-4">
+            <!-- Books will be displayed here by JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyMessage" class="empty-library" style="display: none;">
+            <i class="bi bi-book display-1 mb-3 d-block"></i>
+            <h4>Your library is empty</h4>
+            <p class="mb-0">Click "Add New Book" to start building your collection!</p>
+        </div>
+    </div>
+
+    <!-- Add New Book Modal -->
+    <div class="modal fade" id="newBookModal" tabindex="-1" aria-labelledby="newBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newBookModalLabel">
+                        <i class="bi bi-book-half me-2"></i>
+                        Add New Book
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newBookForm">
+                        <div class="mb-3">
+                            <label for="bookTitle" class="form-label">
+                                <i class="bi bi-bookmark-fill me-1"></i>
+                                Book Title *
+                            </label>
+                            <input type="text" class="form-control" id="bookTitle" name="title" required maxlength="200">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bookAuthor" class="form-label">
+                                <i class="bi bi-person-fill me-1"></i>
+                                Author *
+                            </label>
+                            <input type="text" class="form-control" id="bookAuthor" name="author" required maxlength="100">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bookPages" class="form-label">
+                                <i class="bi bi-file-earmark-text me-1"></i>
+                                Number of Pages *
+                            </label>
+                            <input type="number" class="form-control" id="bookPages" name="pages" min="1" max="50000" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bookGenre" class="form-label">
+                                <i class="bi bi-tags-fill me-1"></i>
+                                Genre (Optional)
+                            </label>
+                            <input type="text" class="form-control" id="bookGenre" name="genre" placeholder="e.g., Fiction, Mystery, Biography" maxlength="50">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bookRead" class="form-label">
+                                <i class="bi bi-check-circle me-1"></i>
+                                Reading Status
+                            </label>
+                            <select class="form-select" id="bookRead" name="read">
+                                <option value="false">Haven't read yet</option>
+                                <option value="true">Finished reading</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bookRating" class="form-label">
+                                <i class="bi bi-star-fill me-1"></i>
+                                Rating (Optional)
+                            </label>
+                            <select class="form-select" id="bookRating" name="rating">
+                                <option value="">No rating</option>
+                                <option value="1">⭐ (1/5)</option>
+                                <option value="2">⭐⭐ (2/5)</option>
+                                <option value="3">⭐⭐⭐ (3/5)</option>
+                                <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                                <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>
+                        Cancel
+                    </button>
+                    <button type="submit" form="newBookForm" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-1"></i>
+                        Add Book
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Application JavaScript - Load in proper order -->
+    <!-- Utility Classes -->
+    <script src="js/utils/HTMLUtils.js"></script>
+    <script src="js/utils/ValidationUtils.js"></script>
+    <script src="js/utils/NotificationSystem.js"></script>
+    
+    <!-- Model Classes -->
+    <script src="js/models/Book.js"></script>
+    <script src="js/models/Library.js"></script>
+    
+    <!-- View Classes -->
+    <script src="js/views/LibraryView.js"></script>
+    <script src="js/views/FormView.js"></script>
+    
+    <!-- Controller Classes -->
+    <script src="js/controllers/LibraryController.js"></script>
+    
+    <!-- Application Entry Point -->
+    <script src="js/app.js"></script>
+</body>
+</html>
