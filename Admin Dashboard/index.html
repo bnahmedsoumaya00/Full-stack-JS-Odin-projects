@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Morgan Oakley</title>
+    
+    <!-- External Fonts and Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="css/sidebar-and-base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main-content.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="mdi mdi-view-dashboard" style="color: #1992d4; font-size: 18px;"></i>
+            </div>
+            <span>Dashboard</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-item active">
+                <i class="mdi mdi-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item">
+                <i class="mdi mdi-account"></i>
+                <span>Profile</span>
+            </div>
+            <div class="nav-item">
+                <i class="mdi mdi-message"></i>
+                <span>Messages</span>
+            </div>
+            <div class="nav-item">
+                <i class="mdi mdi-history"></i>
+                <span>History</span>
+            </div>
+            <div class="nav-item">
+                <i class="mdi mdi-format-list-checks"></i>
+                <span>Tasks</span>
+            </div>
+            <div class="nav-item">
+                <i class="mdi mdi-account-group"></i>
+                <span>Communities</span>
+            </div>
+        </nav>
+
+        <div class="nav-menu bottom-nav">
+            <div class="nav-item">
+                <i class="mdi mdi-cog"></i>
+                <span>Settings</span>
+            </div>
+            <div class="nav-item">
+                <i class="mdi mdi-help-circle"></i>
+                <span>Support</span>
+            </div>
+            <div class="nav-item">
+                <i class="mdi mdi-shield-check"></i>
+                <span>Privacy</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-top">
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-bar" placeholder="Search...">
+            </div>
+            <div class="header-user-info">
+                <div class="notification-icon">🔔</div>
+                <div class="user-avatar-small">
+                    <img src="images/odin-lined.png" alt="avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="user-name">Morgan Oakley</span>
+            </div>
+        </div>
+        
+        <div class="header-bottom">
+            <div class="user-greeting">
+                <div class="user-avatar">
+                    <img src="images/odin-lined.png" alt="avatar" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+                <div class="greeting-text">
+                    <p style="color: #666; font-size: 14px; margin-bottom: 5px;">Hi there,</p>
+                    <h1 style="font-size: 24px; font-weight: 700; color: #333;">Morgan Oakley (@morgan)</h1>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn btn-primary">New</button>
+                <button class="action-btn btn-primary">Upload</button>
+                <button class="action-btn btn-primary">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="projects-section">
+            <h2>Your Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">Super Cool Project</div>
+                    <div class="project-description">
+                        Sed tempus ut lacus ut scelerisque. Suspendisse sollicitudin nibh erat, id facilisis felis accumsan nec.
+                    </div>
+                    <div class="project-actions">
+                        <div class="action-icon">⭐</div>
+                        <div class="action-icon">👁️</div>
+                        <div class="action-icon">🔗</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Less Cool Project</div>
+                    <div class="project-description">
+                        Nullam condimentum ipsum ut lectus vehicula consectetur. Quisque sed dolor tincidunt, consectetur sapien et, facilisis dolor.
+                    </div>
+                    <div class="project-actions">
+                        <div class="action-icon">⭐</div>
+                        <div class="action-icon">👁️</div>
+                        <div class="action-icon">🔗</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Impossible App</div>
+                    <div class="project-description">
+                        In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id.
+                    </div>
+                    <div class="project-actions">
+                        <div class="action-icon">⭐</div>
+                        <div class="action-icon">👁️</div>
+                        <div class="action-icon">🔗</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Easy Peasy App</div>
+                    <div class="project-description">
+                        Etiam cursus eros ac efficitur fringilla. Vestibulum dignissim urna eget accumsan aliquam.
+                    </div>
+                    <div class="project-actions">
+                        <div class="action-icon">⭐</div>
+                        <div class="action-icon">👁️</div>
+                        <div class="action-icon">🔗</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Ad Blocker</div>
+                    <div class="project-description">
+                        Quisque eget rutrum nisl. Nam augue justo, cursus vitae metus vel, pharetra hendrerit felis.
+                    </div>
+                    <div class="project-actions">
+                        <div class="action-icon">⭐</div>
+                        <div class="action-icon">👁️</div>
+                        <div class="action-icon">🔗</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Money Maker</div>
+                    <div class="project-description">
+                        Praesent convallis libero quis congue elementum. Nunc ante faucibus sapien, ac scelerisque tortor purus sit amet ex.
+                    </div>
+                    <div class="project-actions">
+                        <div class="action-icon">⭐</div>
+                        <div class="action-icon">👁️</div>
+                        <div class="action-icon">🔗</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-sidebar">
+            <div class="announcements-section">
+                <h2>Announcements</h2>
+                <div class="announcements-card">
+                    <div class="announcement-item">
+                        <div class="announcement-title">Site Maintenance</div>
+                        <div class="announcement-text">
+                            Vestibulum condimentum tellus lacus, in accumsan elit maximus ac. Donec hendrerit sodales congue...
+                        </div>
+                    </div>
+                    <div class="announcement-item">
+                        <div class="announcement-title">Community Share Day</div>
+                        <div class="announcement-text">
+                            Nam vel lectus tincidunt, rutrum nulla eu, ornare libero. Aliquam dictum accumsan porttitor...
+                        </div>
+                    </div>
+                    <div class="announcement-item">
+                        <div class="announcement-title">Updated Privacy Policy</div>
+                        <div class="announcement-text">
+                            Phasellus efficitur nisl eget elit consectetur, et auctor lorem ante fringilla sapiens porta...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trending-section">
+                <h2>Trending</h2>
+                <div class="trending-card">
+                    <div class="trending-item">
+                        <div class="trending-avatar coral">🦄</div>
+                        <div class="trending-info">
+                            <h4>@tegan</h4>
+                            <p>World Peace Builder</p>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-avatar yellow">🐕</div>
+                        <div class="trending-info">
+                            <h4>@morgan</h4>
+                            <p>Super Cool Project</p>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-avatar orange">🤖</div>
+                        <div class="trending-info">
+                            <h4>@kendall</h4>
+                            <p>Life Changing App</p>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-avatar pink">👨‍💻</div>
+                        <div class="trending-info">
+                            <h4>@alex</h4>
+                            <p>No Traffic Maker</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript Modules -->
+    <script src="js/utils.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/project-cards.js"></script>
+    <script src="js/button-actions.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

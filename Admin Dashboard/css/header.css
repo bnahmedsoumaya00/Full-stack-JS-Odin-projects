@@ -1,0 +1,124 @@
+/* Header Styles */
+.header {
+    grid-area: header;
+    background: white;
+    padding: 2px 40px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    max-width: 600px;
+}
+
+.search-icon {
+    font-size: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background: #f0f0f0;
+    font-size: 16px;
+    outline: none;
+}
+
+.header-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.notification-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.user-avatar-small {
+    width: 45px;
+    height: 45px;
+    background: #ffd700;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.user-greeting {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar {
+    width: 70px;
+    height: 70px;
+    background: #ffd700;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.greeting-text h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.greeting-text p {
+    color: #666;
+    font-size: 16px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.action-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background: #1992d4;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1578b3;
+}
