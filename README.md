@@ -115,18 +115,9 @@ My main focus is mastering **React** and modern frontend development:
 🎯 Performance Optimization:  Future Goal
 ```
 
-### **Career Readiness Metrics**
-```
-💼 Portfolio Projects:        Building
-🚀 Industry Practices:        Implementing
-📝 Technical Documentation:   Improving
-🔧 Problem-Solving Skills:    Strengthening
-👥 Collaboration Tools:       Utilizing
-```
-
 ## 🚀 Current Focus & Upcoming Challenges
 
-### **🔥 Immediate Goals (Next 1-2 months)**
+### **🔥 Immediate Goals (Next month)**
 - **React Fundamentals** - Component lifecycle, props, state
 - **React Hooks Deep Dive** - useState, useEffect, custom hooks  
 - **Project Implementation** - Building React applications from scratch
@@ -138,7 +129,7 @@ My main focus is mastering **React** and modern frontend development:
 - **Testing Implementation** - Jest, React Testing Library
 - **Performance Optimization** - Code splitting, memoization
 
-### **� Ultimate Career Goals (4-6 months)**
+### **🎯 Ultimate Career Goals (4-6 months)**
 - **Full Stack React Applications** - Combining React with Node.js/databases
 - **Portfolio Development** - 3-5 impressive, deployed projects
 - **Job Application Readiness** - Technical interview preparation
@@ -161,11 +152,6 @@ My main focus is mastering **React** and modern frontend development:
 - Modern industry practices and technologies
 - Portfolio pieces that impress potential employers
 
-## 🔗 Connect & Follow My Journey
-
-- **GitHub:** [bnahmedsoumaya00](https://github.com/bnahmedsoumaya00) 
-- **The Odin Project Path:** [Full Stack JavaScript](https://www.theodinproject.com/paths/full-stack-javascript)
-
 ## 🙏 Why The Odin Project?
 
 **The Odin Project** stands out because it:
@@ -175,7 +161,7 @@ My main focus is mastering **React** and modern frontend development:
 - **Focuses on employable skills** and industry-standard practices
 - **Offers a clear path** from learning to career readiness
 
-## � Personal Learning Manifesto
+##  Personal Learning Manifesto
 
 > *"I've spent enough time in tutorial hell. Now it's time to build real applications, solve real problems, and develop the confidence that comes from creating something from nothing. Every project is a step toward professional readiness, every challenge overcome is proof that I can handle the real world of software development."*
 
@@ -185,7 +171,4 @@ My main focus is mastering **React** and modern frontend development:
 
 **💡 Let's connect if you're on a similar journey from tutorials to real-world development!**
 
----
 
-*Last Updated: August 31, 2025*  
-*Current Mission: React Mastery Through Project-Based Learning*
