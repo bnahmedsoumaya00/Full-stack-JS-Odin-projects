@@ -1,0 +1,142 @@
+/* Form Fields Box Styling */
+.form-fields-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+  padding: 32px 28px 24px 28px;
+  grid-column: span 2;
+  margin-bottom: 32px;
+  border: none;
+}
+
+@font-face {
+  font-family: "Norse Bold";
+  src: url("https://db.onlinewebfonts.com/t/7d460b18433753a097e5bc2bad7c8dd9.eot");
+  src: url("https://db.onlinewebfonts.com/t/7d460b18433753a097e5bc2bad7c8dd9.eot?#iefix") format("embedded-opentype"),
+       url("https://db.onlinewebfonts.com/t/7d460b18433753a097e5bc2bad7c8dd9.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/7d460b18433753a097e5bc2bad7c8dd9.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/7d460b18433753a097e5bc2bad7c8dd9.ttf") format("truetype"),
+       url("https://db.onlinewebfonts.com/t/7d460b18433753a097e5bc2bad7c8dd9.svg#Norse Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+   
+}
+.titleOdin {
+  font-family: 'Norse Bold', Arial, sans-serif;
+}
+/* Left Image Section */
+.image-section {
+  background: url("images/halie-west.jpg") no-repeat center center/cover;
+  width: 40%;
+  position: relative;
+}
+
+.logo-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-family: 'Norse Bold', sans-serif;
+  font-size: 3rem;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.logo {
+  height: 80px;
+}
+
+.photo-credit {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: white;
+  text-align: center;
+}
+
+/* Right Form Section */
+.form-section {
+  width: 60%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro {
+  margin-bottom: 30px;
+  font-size: 1.3rem;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+form h2 {
+  grid-column: span 2;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #E5E7EB;
+  border-radius: 4px;
+}
+
+input:focus {
+  border-color: blue;
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.3);
+}
+
+
+button {
+  background-color: #596D48;
+  color: white;
+  padding: 14px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  grid-column: span 2;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.login-text {
+  grid-column: span 2;;
+  font-size: 1rem;
+  margin-top: 18px;
+  text-align: left;
+}
+a{
+    color: white;
+    /* text-decoration: none; */
+}
+.log{color: #596D48;font-weight: bold;}
