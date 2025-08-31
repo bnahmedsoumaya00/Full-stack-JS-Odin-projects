@@ -1,121 +1,82 @@
-# 🚀 JavaScript Objects & Object Constructors Cheatsheet
+# Objects & Object Constructors Cheat Sheet
 
-## 📦 Object Basics
 
-### Creating Objects
-```javascript
-// Object literal (preferred for simple objects)
-const myObject = {
-  property: 'Value!',
-  otherProperty: 77,
-  myMethod: function() { /* do stuff */ }
-};
+## 1. Object Basics
+
+* **Object Literal**: Quick way to create objects.
+```js
+const obj = { key: 'value', num: 5 };
 ```
 
-### Accessing Properties
-```javascript
-// Dot notation (cleaner, preferred)
-myObject.property; // 'Value!'
+* **Accessing Properties**:
+  * **Dot notation**: `obj.key`
+  * **Bracket notation**: `obj['key']` — useful when property names have spaces or are dynamic
 
-// Bracket notation (use for spaces, variables)
-myObject["property with spaces"];
-const variable = 'property';
-myObject[variable]; // dynamic access
-```
+## 2. Object Constructors
 
-## 🏗️ Object Constructors
-
-### Basic Constructor
-```javascript
-function Player(name, marker) {
-  this.name = name;
-  this.marker = marker;
-  this.sayName = function() {
-    console.log(this.name);
-  };
-}
-
-// Create instances
-const player1 = new Player('steve', 'X');
-const player2 = new Player('jenn', 'O');
-```
-
-### ⚠️ Safeguarded Constructor
-```javascript
-function Player(name, marker) {
-  if (!new.target) {
-    throw Error("Must use 'new' operator");
-  }
-  this.name = name;
-  this.marker = marker;
-}
-```
-
-## 🔗 Prototypes & Inheritance
-
-### Adding Methods to Prototype
-```javascript
-Player.prototype.getMarker = function() {
-  return this.marker;
-};
-
-// Now ALL Player instances have this method
-player1.getMarker(); // works!
-```
-
-### Prototypal Inheritance
-```javascript
-function Person(name) {
-  this.name = name;
-}
-
-Person.prototype.sayName = function() {
-  console.log(`Hello, I'm ${this.name}!`);
-};
-
+* A function (capitalized by convention) used with `new` to create similar objects:
+```js
 function Player(name, marker) {
   this.name = name;
   this.marker = marker;
 }
+const player = new Player('steve', 'X');
+```
 
-// Set up inheritance BEFORE creating objects
+* Can include methods directly:
+```js
+this.sayName = function() { console.log(this.name); };
+```
+
+* **Safeguard against misuse**: Ensure `new` is used.
+```js
+if (!new.target) throw Error("Use 'new'");
+```
+
+## 3. Prototype & Inheritance
+
+* **Prototype**: Every JS object has a prototype it inherits from.
+  * You can check with:
+```js
+Object.getPrototypeOf(player1) === Player.prototype
+```
+
+* **Adding shared methods**:
+```js
+Player.prototype.sayHello = function() {
+  console.log("Hello, I'm a player!");
+};
+```
+— accessible by all instances
+
+* **Prototype Chain**:
+  * Objects inherit up the chain (→ `Object.prototype`) to get methods like `.valueOf`, `.hasOwnProperty`, etc.
+
+## 4. Prototypal Inheritance
+
+* **Why use prototypes?**
+  * Saves memory by sharing methods across instances.
+  * Enables inheritance (child objects gaining methods from parent prototypes).
+
+* **Set up inheritance**:
+```js
 Object.setPrototypeOf(Player.prototype, Person.prototype);
+```
+Now, `Player` gets methods from `Person` too
 
-const player = new Player('alice', 'X');
-player.sayName(); // inherited from Person!
+* **Do NOT do this**:
+```js
+Player.prototype = Person.prototype; // Avoid this — it causes unwanted linkages!
 ```
 
-## 🔍 Key Concepts
+## Summary Table
 
-| Concept | Description |
-|---------|------------|
-| **Prototype** | Object that other objects inherit from |
-| **`this`** | Refers to the object instance being created/used |
-| **Inheritance** | Objects can access properties/methods from their prototype chain |
-| **Constructor** | Function that creates and initializes objects (use `new`) |
+| Concept | What It Is | Why It Matters |
+|---------|------------|----------------|
+| Object literal | `{ key: value }` | Quick and easy object creation |
+| Bracket notation | `obj['key']` | Needed for dynamic or special keys |
+| Constructor function | `new Player(name, marker)` | Standard pattern for many similar objects |
+| `new.target` safeguard | Ensures constructor is used correctly | Prevents subtle bugs |
+| Prototype | Shared object blueprint | Saves memory, centralizes shared logic |
+| Inheritance via prototype | `setPrototypeOf()` for linking constructors | Enables shared behavior from parent type |
 
-## ✅ Best Practices
-
-- ✅ Use `Object.setPrototypeOf()` for inheritance
-- ✅ Set up prototype chain BEFORE creating objects  
-- ✅ Use object literals for simple, one-off objects
-- ✅ Use constructors for objects you need to duplicate
-- ❌ Don't use `Player.prototype = Person.prototype` (direct reference)
-- ❌ Don't use `.__proto__` (deprecated)
-
-## 🎯 Quick Example: Book Constructor
-```javascript
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-Book.prototype.info = function() {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`;
-};
-
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-console.log(theHobbit.info()); // "The Hobbit by J.R.R. Tolkien, 295 pages, not read yet"
-```
