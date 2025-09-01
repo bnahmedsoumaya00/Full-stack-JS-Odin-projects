@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - Debug Version</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe - Debug Version</h1>
+        
+        <!-- Setup Screen -->
+        <div class="setup-screen" id="setupScreen">
+            <div class="player-inputs">
+                <div class="player-input">
+                    <span class="player-symbol">X</span>
+                    <input type="text" id="player1Name" placeholder="Enter Player 1 name" value="Player 1">
+                </div>
+                <div class="player-input">
+                    <span class="player-symbol">O</span>
+                    <input type="text" id="player2Name" placeholder="Enter Player 2 name" value="Player 2">
+                </div>
+            </div>
+            <button id="startButton" type="button">Start Game</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="gameScreen">
+            <div class="game-info">
+                <div class="current-player" id="currentPlayer"></div>
+            </div>
+            
+            <div class="gameboard" id="gameboard"></div>
+            
+            <div class="game-result" id="gameResult"></div>
+            
+            <div class="game-controls">
+                <button id="newGameButton" type="button">New Game</button>
+                <button id="changePlayersButton" type="button">Change Players</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Debug Script -->
+    <script type="module">
+        console.log('🔧 Debug: Starting module loading...');
+        
+        try {
+            // Test individual imports first
+            console.log('🔧 Debug: Importing Player...');
+            const { default: Player } = await import('./js/models/Player.js');
+            console.log('✅ Player imported successfully:', Player);
+            
+            console.log('🔧 Debug: Importing Gameboard...');
+            const { default: Gameboard } = await import('./js/models/Gameboard.js');
+            console.log('✅ Gameboard imported successfully:', Gameboard);
+            
+            console.log('🔧 Debug: Importing Game...');
+            const { default: Game } = await import('./js/models/Game.js');
+            console.log('✅ Game imported successfully:', Game);
+            
+            console.log('🔧 Debug: Testing Player creation...');
+            const player1 = new Player('Alice', 'X');
+            const player2 = new Player('Bob', 'O');
+            console.log('✅ Players created:', player1, player2);
+            
+            console.log('🔧 Debug: Testing Gameboard creation...');
+            const gameboard = new Gameboard();
+            console.log('✅ Gameboard created:', gameboard);
+            
+            console.log('🔧 Debug: Testing Game creation...');
+            const game = new Game(player1, player2, gameboard);
+            console.log('✅ Game created:', game);
+            
+            console.log('🔧 Debug: Importing views...');
+            const { default: SetupView } = await import('./js/views/SetupView.js');
+            const { default: GameView } = await import('./js/views/GameView.js');
+            console.log('✅ Views imported successfully');
+            
+            console.log('🔧 Debug: Importing controller...');
+            const { default: GameController } = await import('./js/controllers/GameController.js');
+            console.log('✅ Controller imported successfully');
+            
+            console.log('🔧 Debug: Creating controller instance...');
+            const setupView = new SetupView();
+            const gameView = new GameView();
+            const gameController = new GameController(game, setupView, gameView);
+            console.log('✅ Controller created successfully');
+            
+            // Make available globally
+            window.gameController = gameController;
+            window.debugComponents = {
+                Player,
+                Gameboard,
+                Game,
+                SetupView,
+                GameView,
+                GameController,
+                game,
+                gameController
+            };
+            
+            console.log('🎉 All components loaded successfully!');
+            console.log('🎮 You can now interact with the game or check window.debugComponents');
+            
+        } catch (error) {
+            console.error('❌ Debug: Error during loading:', error);
+            console.error('Stack trace:', error.stack);
+            
+            // Show error in UI
+            document.body.innerHTML = `
+                <div style="padding: 2rem; color: #e53e3e; text-align: center;">
+                    <h2>Loading Error</h2>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p><strong>Check the browser console for more details.</strong></p>
+                    <details style="margin-top: 1rem; text-align: left;">
+                        <summary>Stack Trace</summary>
+                        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow: auto;">${error.stack}</pre>
+                    </details>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

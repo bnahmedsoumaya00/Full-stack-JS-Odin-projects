@@ -1,0 +1,190 @@
+/* Tic Tac Toe Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+h1 {
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.setup-screen {
+    margin-bottom: 2rem;
+}
+
+.player-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.player-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.player-symbol {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #4a5568;
+    width: 30px;
+}
+
+input[type="text"] {
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 200px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.game-screen {
+    display: none;
+}
+
+.game-info {
+    margin-bottom: 1.5rem;
+}
+
+.current-player {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 2rem auto;
+    max-width: 300px;
+    background: #4a5568;
+    padding: 8px;
+    border-radius: 15px;
+}
+
+.cell {
+    background: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+}
+
+.cell:hover:not(:disabled) {
+    background: #f7fafc;
+    transform: scale(1.05);
+}
+
+.cell:disabled {
+    cursor: not-allowed;
+}
+
+.game-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    display: none;
+}
+
+.game-result.winner {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+}
+
+.game-result.tie {
+    background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+    color: white;
+}
+
+.game-controls {
+    margin-top: 1.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .player-input {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+    }
+}

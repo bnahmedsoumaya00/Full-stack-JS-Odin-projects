@@ -1,0 +1,58 @@
+{
+  "name": "tic-tac-toe-oop",
+  "version": "1.0.0",
+  "description": "Object-oriented Tic Tac Toe game with modern JavaScript architecture",
+  "main": "js/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "python -m http.server 8000 || python3 -m http.server 8000 || npx serve .",
+    "test": "node js/tests.js",
+    "lint": "echo 'No linter configured - add ESLint for production'",
+    "build": "echo 'No build process needed - pure ES6 modules'",
+    "dev": "echo 'Open index-oop.html in your browser to start development'"
+  },
+  "keywords": [
+    "tic-tac-toe",
+    "javascript",
+    "es6",
+    "oop",
+    "mvc",
+    "game",
+    "modules",
+    "classes"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 61",
+    "Firefox >= 60",
+    "Safari >= 10.1",
+    "Edge >= 16"
+  ],
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^2.0.0",
+    "serve": "^14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/tic-tac-toe-oop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/tic-tac-toe-oop/issues"
+  },
+  "homepage": "https://github.com/your-username/tic-tac-toe-oop#readme",
+  "directories": {
+    "test": "js/tests.js",
+    "doc": "README-OOP.md"
+  },
+  "files": [
+    "js/",
+    "css/",
+    "index-oop.html",
+    "README-OOP.md"
+  ]
+}

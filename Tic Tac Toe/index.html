@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - Object-Oriented</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Additional styles for enhanced features */
+        .error-messages {
+            background: #fed7d7;
+            border: 1px solid #e53e3e;
+            color: #e53e3e;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .error-messages .error {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        .theme-dark {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 2px solid #667eea;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Console info */
+        .console-info {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            max-width: 300px;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .console-info {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+        
+        <!-- Setup Screen -->
+        <div class="setup-screen" id="setupScreen">
+            <div class="player-inputs">
+                <div class="player-input">
+                    <span class="player-symbol">X</span>
+                    <input type="text" id="player1Name" placeholder="Enter Player 1 name" value="Player 1">
+                </div>
+                <div class="player-input">
+                    <span class="player-symbol">O</span>
+                    <input type="text" id="player2Name" placeholder="Enter Player 2 name" value="Player 2">
+                </div>
+            </div>
+            <button id="startButton" type="button">Start Game</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="gameScreen">
+            <div class="game-info">
+                <div class="current-player" id="currentPlayer"></div>
+            </div>
+            
+            <div class="gameboard" id="gameboard"></div>
+            
+            <div class="game-result" id="gameResult"></div>
+            
+            <div class="game-controls">
+                <button id="newGameButton" type="button">New Game</button>
+                <button id="changePlayersButton" type="button">Change Players</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Console Info (visible on larger screens) -->
+    <div class="console-info" id="consoleInfo">
+        <strong>Console Commands:</strong><br>
+        • <code>gameController.displayBoardInConsole()</code> - Show board<br>
+        • <code>ticTacToeApp.getStatus()</code> - App status<br>
+        • <code>ticTacToeApp.getComponents()</code> - Get components
+    </div>
+
+    <!-- Application Scripts -->
+    <script type="module">
+        // Import the main application
+        import TicTacToeApp from './js/app.js';
+        
+        // The app will auto-initialize when DOM is ready
+        console.log('🎮 Tic Tac Toe - Object-Oriented Version');
+        console.log('📝 Check the console info in the bottom-left corner for available commands');
+        
+        // Add some global utilities for debugging
+        window.utils = {
+            showConsoleInfo: () => {
+                const info = document.getElementById('consoleInfo');
+                if (info) {
+                    info.style.display = info.style.display === 'none' ? 'block' : 'none';
+                }
+            },
+            
+            getAppStatus: () => {
+                if (window.ticTacToeApp) {
+                    return window.ticTacToeApp.getStatus();
+                }
+                return { error: 'App not initialized' };
+            },
+            
+            exportGameHistory: () => {
+                if (window.gameController) {
+                    const history = window.gameController.getGameHistory();
+                    console.table(history);
+                    return history;
+                }
+                return [];
+            }
+        };
+        
+        // Log available utilities
+        setTimeout(() => {
+            console.log('🛠️  Available utilities:', Object.keys(window.utils));
+        }, 1000);
+    </script>
+
+    <!-- Fallback for non-module browsers -->
+    <script nomodule>
+        console.error('This browser does not support ES6 modules. Please use a modern browser.');
+        document.body.innerHTML = `
+            <div style="text-align: center; padding: 2rem; color: #e53e3e;">
+                <h2>Browser Not Supported</h2>
+                <p>This application requires a modern browser that supports ES6 modules.</p>
+                <p>Please update your browser or use Chrome, Firefox, Safari, or Edge.</p>
+            </div>
+        `;
+    </script>
+</body>
+</html>

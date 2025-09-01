@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - Simple OOP Version</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+        
+        <!-- Setup Screen -->
+        <div class="setup-screen" id="setupScreen">
+            <div class="player-inputs">
+                <div class="player-input">
+                    <span class="player-symbol">X</span>
+                    <input type="text" id="player1Name" placeholder="Enter Player 1 name" value="Player 1">
+                </div>
+                <div class="player-input">
+                    <span class="player-symbol">O</span>
+                    <input type="text" id="player2Name" placeholder="Enter Player 2 name" value="Player 2">
+                </div>
+            </div>
+            <button id="startButton" type="button">Start Game</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="gameScreen">
+            <div class="game-info">
+                <div class="current-player" id="currentPlayer"></div>
+            </div>
+            
+            <div class="gameboard" id="gameboard"></div>
+            
+            <div class="game-result" id="gameResult"></div>
+            
+            <div class="game-controls">
+                <button id="newGameButton" type="button">New Game</button>
+                <button id="changePlayersButton" type="button">Change Players</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Simple inline version to test the classes
+        
+        // Import classes
+        import Player from './js/models/Player.js';
+        import Gameboard from './js/models/Gameboard.js';
+        import Game from './js/models/Game.js';
+        
+        console.log('🎮 Simple OOP Tic Tac Toe loaded');
+        
+        // Simple game controller
+        class SimpleGameController {
+            constructor() {
+                this.game = null;
+                this.setupElements();
+                this.bindEvents();
+                this.showSetupScreen();
+            }
+            
+            setupElements() {
+                this.elements = {
+                    setupScreen: document.getElementById('setupScreen'),
+                    gameScreen: document.getElementById('gameScreen'),
+                    player1Input: document.getElementById('player1Name'),
+                    player2Input: document.getElementById('player2Name'),
+                    startButton: document.getElementById('startButton'),
+                    gameboard: document.getElementById('gameboard'),
+                    currentPlayer: document.getElementById('currentPlayer'),
+                    gameResult: document.getElementById('gameResult'),
+                    newGameButton: document.getElementById('newGameButton'),
+                    changePlayersButton: document.getElementById('changePlayersButton')
+                };
+            }
+            
+            bindEvents() {
+                this.elements.startButton.addEventListener('click', () => this.startGame());
+                this.elements.newGameButton.addEventListener('click', () => this.restartGame());
+                this.elements.changePlayersButton.addEventListener('click', () => this.showSetupScreen());
+            }
+            
+            startGame() {
+                try {
+                    const player1Name = this.elements.player1Input.value.trim() || 'Player 1';
+                    const player2Name = this.elements.player2Input.value.trim() || 'Player 2';
+                    
+                    // Create players
+                    const player1 = new Player(player1Name, 'X');
+                    const player2 = new Player(player2Name, 'O');
+                    
+                    // Create gameboard and game
+                    const gameboard = new Gameboard();
+                    this.game = new Game(player1, player2, gameboard);
+                    
+                    // Start the game
+                    this.game.startGame();
+                    
+                    // Switch to game screen
+                    this.showGameScreen();
+                    this.updateDisplay();
+                    this.renderBoard();
+                    
+                    console.log('Game started successfully!');
+                } catch (error) {
+                    console.error('Error starting game:', error);
+                    alert('Error starting game: ' + error.message);
+                }
+            }
+            
+            makeMove(index) {
+                if (!this.game || !this.game.isGameActive()) {
+                    return;
+                }
+                
+                const result = this.game.makeMove(index);
+                if (result.success) {
+                    this.updateDisplay();
+                    this.renderBoard();
+                    
+                    const gameState = result.gameState;
+                    if (!gameState.isGameActive) {
+                        this.handleGameEnd(gameState);
+                    }
+                }
+            }
+            
+            handleGameEnd(gameState) {
+                if (gameState.winningPlayer) {
+                    this.showResult(`${gameState.winningPlayer.name} wins!`, 'winner');
+                } else if (gameState.isFull) {
+                    this.showResult("It's a tie!", 'tie');
+                }
+            }
+            
+            restartGame() {
+                if (this.game) {
+                    this.game.restartGame();
+                    this.hideResult();
+                    this.updateDisplay();
+                    this.renderBoard();
+                }
+            }
+            
+            showSetupScreen() {
+                this.elements.setupScreen.style.display = 'block';
+                this.elements.gameScreen.style.display = 'none';
+                this.elements.player1Input.value = 'Player 1';
+                this.elements.player2Input.value = 'Player 2';
+            }
+            
+            showGameScreen() {
+                this.elements.setupScreen.style.display = 'none';
+                this.elements.gameScreen.style.display = 'block';
+            }
+            
+            updateDisplay() {
+                if (!this.game) return;
+                
+                const gameState = this.game.getGameState();
+                if (gameState.isGameActive && gameState.currentPlayer) {
+                    this.elements.currentPlayer.textContent = 
+                        `${gameState.currentPlayer.name}'s turn (${gameState.currentPlayer.symbol})`;
+                }
+            }
+            
+            renderBoard() {
+                if (!this.game) return;
+                
+                const gameState = this.game.getGameState();
+                this.elements.gameboard.innerHTML = '';
+                
+                gameState.board.forEach((cell, index) => {
+                    const cellElement = document.createElement('button');
+                    cellElement.className = 'cell';
+                    cellElement.textContent = cell;
+                    cellElement.disabled = cell !== '' || !gameState.isGameActive;
+                    
+                    cellElement.addEventListener('click', () => this.makeMove(index));
+                    this.elements.gameboard.appendChild(cellElement);
+                });
+            }
+            
+            showResult(message, type) {
+                this.elements.gameResult.textContent = message;
+                this.elements.gameResult.className = `game-result ${type}`;
+                this.elements.gameResult.style.display = 'block';
+            }
+            
+            hideResult() {
+                this.elements.gameResult.style.display = 'none';
+            }
+        }
+        
+        // Initialize the game when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.simpleGameController = new SimpleGameController();
+            console.log('✅ Simple game controller initialized');
+        });
+        
+        // If DOM is already loaded
+        if (document.readyState === 'loading') {
+            // Wait for DOMContentLoaded
+        } else {
+            window.simpleGameController = new SimpleGameController();
+            console.log('✅ Simple game controller initialized');
+        }
+        
+    </script>
+</body>
+</html>
